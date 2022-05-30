@@ -29,7 +29,7 @@ export default class ColorService extends BaseService {
         colors.unshift(colorDef);
 
         // Remove duplicate names (except empty entries)
-        colors = uniqBy(colors, d => d[1] || Math.random());
+        colors = uniqBy(colors, (d: any[]) => d[1] || Math.random());
 
         var maxColorCount = this.configurationSection.get('recentColorsToRemember') as number;
         colors = colors.slice(0, maxColorCount);
@@ -121,12 +121,15 @@ export default class ColorService extends BaseService {
             g = (+split[1]).toString(16),
             b = (+split[2]).toString(16);
 
-        if (r.length == 1)
+        if (r.length === 1) {
             r = "0" + r;
-        if (g.length == 1)
+        }
+        if (g.length === 1) {
             g = "0" + g;
-        if (b.length == 1)
+        }
+        if (b.length === 1) {
             b = "0" + b;
+        }
 
         return "#" + r + g + b;
     }

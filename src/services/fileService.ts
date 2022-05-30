@@ -18,7 +18,7 @@ export default class FileService extends BaseService {
         filePath = path.normalize(filePath);
         var dir = path.dirname(filePath);
 
-        await new Promise((resolve, reject) => {
+        await new Promise<void>((resolve, reject) => {
             try {
                 if (!fs.existsSync(dir)) {
                     fs.mkdirSync(dir);
